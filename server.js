@@ -37,6 +37,9 @@ var MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost:27017/reactnyt
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
+
+
+
 // Start the server
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");

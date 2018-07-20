@@ -1,21 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import BSJumbotron from './components/Jumbotron/jumbotron'
+import { Jumbotron } from "react-bootstrap";
+import SearchForm from "./components/searchForm";
+import Results from "./components/results";
+import SavedArticles from "./components/savedArticles";
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="container text-center">
+        <Jumbotron>
+          <h1>New York Times</h1>
+          <p>
+            Search for and save articles!
+          </p>       
+        </Jumbotron>
+        <SearchForm/>
+        <Results/>
+        <SavedArticles/>
       </div>
-    );
+      );
+    }
   }
-}
 
+
+
+  const App = () => (
+    <BrowserRouter>
+      <div className="container text-center">
+        <Jumbotron />
+        <SearchForm />
+        <Route exact path="/results" component={Results} />
+        <Route exact path="/saved" component={SavedArticles} />
+        {/* <Route component={NoMatch} /> */}
+      </div>
+    </BrowserRouter>
+  );
 export default App;
